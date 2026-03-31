@@ -14,28 +14,56 @@ function getComputerChoice() {
             return "scissors"
     }
 }
-console.log(getComputerChoice())
+const computerChoice = getComputerChoice();
+console.log(computerChoice);
 
 function getHumanChoice() {
     return humanChoice.toLowerCase();
 }
-let humanChoice = prompt("Choose rock, paper, or scissors:  ");
+const humanChoice = prompt("Choose rock, paper, or scissors:  ");
 console.log(getHumanChoice());
 
-function scoring() {
+function singleRound() { 
+    const win = "win";
+    const lose = "lose";
+    const draw = "draw"; 
+    const error = "error";
     
+    if (getHumanChoice() == "rock" && computerChoice == "scissors") {
+        return win     
+    } if (getHumanChoice() == "paper" && computerChoice == "rock") {
+        return win
+    } if (getHumanChoice() == "scissors" && computerChoice == "paper") {
+        return win
+    } if (getHumanChoice() == computerChoice) {
+        return draw
+    } if (getHumanChoice() != "rock" && getHumanChoice() != "paper" && getHumanChoice() != "scissors") {
+        return error 
+    } else 
+        return lose
+}
+console.log(singleRound());
+
+function scoring() {
+    // on a human win increment the humanScore by 1, on a loss increment computerScore by 1
+    // output both scores
+    const result = singleRound();
+    if (result == "win") {
+        humanScore ++;
+        return `You're winner! ${totalScore}`
+    } if (result == "lose") {
+        computerScore ++;
+        return `You've lose! ${totalScore}`
+    } if (result == "draw") {
+        return `Draw! Try again. ${totalScore}`
+    } if (result == "error") {
+        return "Please input a vaild choice - rock, paper, or scissors."
+    } else {
+        return "Something has gone very wrong!"
+    }   
 }
 
-function singleRound() { 
-   /* if (getHumanChoice() == "rock" && getComputerChoice() == "scissors") {
-        return "Rock vs. scissors. You win! Play again?"        
-    } if (getHumanChoice() == "paper" && getComputerChoice() == "rock") {
-        return "Paper vs. rock. You win! Play again?"
-    } if (getHumanChoice() == "scissors" && getComputerChoice() == "paper") {
-        return "Scissors vs. paper. You win! Play again?"
-    } if (getHumanChoice() == getComputerChoice()) 
-        return "Draw. Play again?"
-    //else 
-      //  return "Oops! Something went wrong. Try again?"*/
-}
-console.log(scoring())
+let humanScore = 0;
+let computerScore = 0;
+
+console.log(scoring());
