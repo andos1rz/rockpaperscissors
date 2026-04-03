@@ -48,19 +48,20 @@ function scoring() {
     // on a human win increment the humanScore by 1, on a loss increment computerScore by 1
     // output both scores
     const result = singleRound();
+    let message = "";
     if (result == "win") {
         humanScore ++;
-        return `You're winner! ${totalScore}`
+        message = "You're winner!"
     } if (result == "lose") {
         computerScore ++;
-        return `You've lose! ${totalScore}`
+        message = "You've lose!"
     } if (result == "draw") {
-        return `Draw! Try again. ${totalScore}`
+        message = "Draw! Try again."
     } if (result == "error") {
-        return "Please input a vaild choice - rock, paper, or scissors."
-    } else {
-        return "Something has gone very wrong!"
-    }   
+        message = "Please input a vaild choice - rock, paper, or scissors."
+    }
+    let totalScore = `${humanScore} - ${computerScore}`;   
+    return `${message} ${totalScore}`
 }
 
 let humanScore = 0;
