@@ -1,8 +1,8 @@
 // make computer randomly return string "rock", "paper", or "scissors" ---DONE---
 // get human input of either "rock", "paper", or "scissors" ---DONE---
-// write a system to keep score between rounds
-// write the logic to play a single round
-// write the logic to play an entire game of x rounds
+// write a system to keep score between rounds ---DONE---
+// write the logic to play a single round ---DONE---
+// write the logic to play an entire game of x rounds 
 
 function getComputerChoice() {
     switch (Math.floor(Math.random() * 3) + 1) {
@@ -15,13 +15,13 @@ function getComputerChoice() {
     }
 }
 const computerChoice = getComputerChoice();
-console.log(computerChoice);
+// console.log(computerChoice);
 
 function getHumanChoice() {
     return humanChoice.toLowerCase();
 }
 const humanChoice = prompt("Choose rock, paper, or scissors:  ");
-console.log(getHumanChoice());
+// console.log(getHumanChoice());
 
 function singleRound() { 
     const win = "win";
@@ -42,7 +42,10 @@ function singleRound() {
     } else 
         return lose
 }
-console.log(singleRound());
+
+function playGame() {
+
+}
 
 function scoring() {
     // on a human win increment the humanScore by 1, on a loss increment computerScore by 1
@@ -51,12 +54,12 @@ function scoring() {
     let message = "";
     if (result == "win") {
         humanScore ++;
-        message = "You're winner!"
+        message = `${getHumanChoice()} vs. ${computerChoice}. You win!`;
     } if (result == "lose") {
         computerScore ++;
-        message = "You've lose!"
+        message = `${getHumanChoice()} vs. ${computerChoice}. You lose.`;
     } if (result == "draw") {
-        message = "Draw! Try again."
+        message = `${getHumanChoice()} vs. ${computerChoice}. Draw! Try again.`;
     } if (result == "error") {
         message = "Please input a vaild choice - rock, paper, or scissors."
     }
