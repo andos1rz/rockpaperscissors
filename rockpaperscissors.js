@@ -5,7 +5,14 @@
 // write the logic to play an entire game of x rounds 
 
 function playGame() {
-    function getComputerChoice() {
+    function singleRound() { 
+        const win = "win";
+        const lose = "lose";
+        const draw = "draw"; 
+        const error = "error";
+        const humanChoice = prompt("Choose rock, paper, or scissors:  ").toLowerCase();
+        
+        function getComputerChoice() {
         switch (Math.floor(Math.random() * 3) + 1) {
             case 1:
                 return "rock"
@@ -13,30 +20,18 @@ function playGame() {
                 return "paper"
             case 3:
                 return "scissors"
-        }
-    }
-    const computerChoice = getComputerChoice();
-    
-    function getHumanChoice() {
-        return humanChoice.toLowerCase();
-    }
-    const humanChoice = prompt("Choose rock, paper, or scissors:  ");
-    
-    function singleRound() { 
-        const win = "win";
-        const lose = "lose";
-        const draw = "draw"; 
-        const error = "error";
+        }}
+        const computerChoice = getComputerChoice();
         
-        if (getHumanChoice() == "rock" && computerChoice == "scissors") {
+        if (humanChoice == "rock" && computerChoice == "scissors") {
             return win     
-        } if (getHumanChoice() == "paper" && computerChoice == "rock") {
+        } if (humanChoice == "paper" && computerChoice == "rock") {
             return win
-        } if (getHumanChoice() == "scissors" && computerChoice == "paper") {
+        } if (humanChoice == "scissors" && computerChoice == "paper") {
             return win
-        } if (getHumanChoice() == computerChoice) {
+        } if (humanChoice == computerChoice) {
             return draw
-        } if (getHumanChoice() != "rock" && getHumanChoice() != "paper" && getHumanChoice() != "scissors") {
+        } if (humanChoice != "rock" && humanChoice != "paper" && humanChoice != "scissors") {
             return error 
         } else 
             return lose
@@ -48,21 +43,24 @@ function playGame() {
         let message = "";
         if (result == "win") {
             humanScore ++;
-            message = `${getHumanChoice()} vs. ${computerChoice}. You win!`;
+            message = "You win!";
         } if (result == "lose") {
             computerScore ++;
-            message = `${getHumanChoice()} vs. ${computerChoice}. You lose.`;
+            message = "You lose.";
         } if (result == "draw") {
-            message = `${getHumanChoice()} vs. ${computerChoice}. Draw! Try again.`;
+            message = "Draw! Try again.";
         } if (result == "error") {
             message = "Please input a vaild choice - rock, paper, or scissors."
         }
-        let totalScore = `Score: ${humanScore} - ${computerScore}`;   
+        let totalScore = `Score: (You ${humanScore}) - (CPU ${computerScore})`;   
         return `${message} ${totalScore}`
     }
     let humanScore = 0;
     let computerScore = 0;
-    console.log(scoring());
-
+    // console.log(scoring());
     
-}    
+   for (let i = 0; i < 5; i++) {
+    console.log(scoring());
+   }
+}
+playGame();
