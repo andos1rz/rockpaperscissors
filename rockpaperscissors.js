@@ -60,6 +60,7 @@ function playGame() {
     // console.log(scoring());
     
    for (let i = 0; i < 5; i++) {
+    // scoring() calls singleRound() within it so just looping scoring() plays i rounds
     console.log(scoring());
    }
 }
